@@ -1,0 +1,94 @@
+﻿@model Transformers.Services.GameScore
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Transformers Game</h1>  
+</div>
+
+<div class="row">
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    {
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td>Transformer 1: </td>
+                <td>
+                    @Html.TextBox("transformers")
+                </td>
+            </tr>
+            <tr>
+                <td>Transformer 2: </td>
+                <td>
+                    @Html.TextBox("transformers")
+                </td>
+            </tr>
+            <tr>
+                <td>Transformer 3: </td>
+                <td>
+                    @Html.TextBox("transformers")
+                </td>
+            </tr>
+            <tr>
+                <td>Transformer 4: </td>
+                <td>
+                    @Html.TextBox("transformers")
+                </td>
+            </tr>
+            <tr>
+                <td>Transformer 5: </td>
+                <td>
+                    @Html.TextBox("transformers")
+                </td>
+            </tr>
+            <tr>
+                <td>Transformer 6: </td>
+                <td>
+                    @Html.TextBox("transformers")
+                </td>
+            </tr>
+            <tr>
+                <td>Transformer 7: </td>
+                <td>
+                    @Html.TextBox("transformers")
+                </td>
+            </tr>
+            <tr>
+                <td>Transformer 8: </td>
+                <td>
+                    @Html.TextBox("transformers")
+                </td>
+            </tr>
+            <tr>
+                <td>Transformer 9: </td>
+                <td>
+                    @Html.TextBox("transformers")
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Submit"/></td>
+            </tr>
+        </table>
+
+        if (Model != null)
+        {
+            <h2>Game Score</h2>
+
+            <div class="row">
+                @Model.Battles battle(s)
+                <br/>
+                Winning team (@Model.WinningTeam): @Model.Winners
+                <br/>
+                Survivors from the losing team (@Model.LosingTeam): @(string.Join(",", Model.Survivors))
+                <br/>
+            </div>
+        }
+        if (ViewData.Keys.Contains("Errors")) {
+            <div class="row">
+                <br/>
+                @ViewData["Errors"]
+            </div>
+        }
+    }
+</div> 
