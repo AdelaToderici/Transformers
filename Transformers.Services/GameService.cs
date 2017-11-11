@@ -11,6 +11,9 @@ namespace Transformers.Services
          
         public GameScore ComputeScore(List<Transformer> transformers)
         {
+            if(!transformers.All(Validate))
+                throw new ArgumentException("Transformers were not correctly specified");
+
             var autobots = transformers.Where(x => x.Type == TransformerType.Autobot).OrderByDescending(x=>x.Rank).ToList();
             var decepticons = transformers.Where(x => x.Type == TransformerType.Decepticon).OrderByDescending(x => x.Rank).ToList();
             var autobotWins = 0;
@@ -59,6 +62,35 @@ namespace Transformers.Services
             }
 
             return gameScore;
+        }
+
+        private bool Validate(Transformer transformer)
+        {
+            if (transformer.Courage < 1 || transformer.Courage > 10)
+                return false;
+
+            if (transformer.Endurance < 1 || transformer.Endurance > 10)
+                return false;
+
+            if (transformer.Firepower < 1 || transformer.Firepower > 10)
+                return false;
+
+            if (transformer.Rank < 1 || transformer.Rank > 10)
+                return false;
+
+            if (transformer.Skill < 1 || transformer.Skill > 10)
+                return false;
+
+            if (transformer.Strength < 1 || transformer.Strength > 10)
+                return false;
+
+            if (transformer.Intelligence < 1 || transformer.Intelligence > 10)
+                return false;
+
+            if (transformer.Speed < 1 || transformer.Speed > 10)
+                return false;
+
+            return true;
         }
 
         private int CompareTransformers(Transformer first, Transformer second)
