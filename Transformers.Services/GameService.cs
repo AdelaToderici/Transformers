@@ -94,7 +94,7 @@ namespace Transformers.Services
                 return -1;
             }
 
-            return first.GetRating(second);
+            return first.GetRating().CompareTo(second.GetRating());
         }
     }
 }
