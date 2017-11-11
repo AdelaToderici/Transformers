@@ -13,7 +13,7 @@ namespace Transformers.Services
         public int Firepower { get; set; }
         public int Skill { get; set; }
 
-        public int GetRating(Transformer transformer) {
+        public int GetRating() {
             return Strength +
                    Intelligence +
                    Speed +
