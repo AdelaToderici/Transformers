@@ -49,7 +49,7 @@ namespace Transformers.Client.WebApp.Controllers {
 
         private static Transformer GetTransformer(string value)
         {
-            var tokens = value.Split(',').Select(x=>x.Trim()).ToList();  
+            var tokens = value.Split(',',':','.',';').Select(x=>x.Trim()).ToList();  
             var transformer = new Transformer
             {
                 Name = tokens[0],
